@@ -56,7 +56,7 @@ public class DriverClass {
             System.out.print(i+" ");
         }
 
-        Set<Integer> bfsResultRecursive = BreadthFirstSearch.BreadthFirstSearch(graphAdjacencyList,0);
+        Set<Integer> bfsResultRecursive = BreadthFirstSearch.recursiveBFS(graphAdjacencyList,0);
         System.out.println("\nBreadth First Search Over Graph (Recursive)");
         for(Integer i : bfsResultRecursive){
             System.out.print(i+" ");

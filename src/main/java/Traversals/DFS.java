@@ -35,7 +35,7 @@ public class DFS {
         return visitedNodes;
     }
 
-    public void dfsHelper(GraphAdjacencyList graphAdjacencyList, Set<Integer> visitedNodes, int root){
+    private void dfsHelper(GraphAdjacencyList graphAdjacencyList, Set<Integer> visitedNodes, int root){
         if(!visitedNodes.contains(root)){
             visitedNodes.add(root);
             try {

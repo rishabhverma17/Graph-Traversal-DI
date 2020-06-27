@@ -37,7 +37,7 @@ public class BFS {
         return visitedNodes;
     }
 
-    public void bfsHelper(GraphAdjacencyList graphAdjacencyList, Set<Integer> visitedNodes, Queue<Integer> q){
+    private void bfsHelper(GraphAdjacencyList graphAdjacencyList, Set<Integer> visitedNodes, Queue<Integer> q){
         if(q.isEmpty()){
             return;
         }
@@ -46,7 +46,9 @@ public class BFS {
             visitedNodes.add(polledVertex);
             try {
                 for(Integer vertex : graphAdjacencyList.getEdge(polledVertex)){
-                    q.offer(vertex);
+                    if(!visitedNodes.contains(vertex) && !q.contains(vertex)){
+                        q.offer(vertex);
+                    }
                 }
             } catch (InvalidVerticeException e) {
                 e.printStackTrace();
