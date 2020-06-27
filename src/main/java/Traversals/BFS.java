@@ -28,4 +28,32 @@ public class BFS {
         }
         return visitedNodes;
     }
+
+    public Set<Integer> recursiveBFS(GraphAdjacencyList graphAdjacencyList, int root){
+        Set<Integer> visitedNodes = new LinkedHashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(root);
+        bfsHelper(graphAdjacencyList,visitedNodes,q);
+        return visitedNodes;
+    }
+
+    public void bfsHelper(GraphAdjacencyList graphAdjacencyList, Set<Integer> visitedNodes, Queue<Integer> q){
+        if(q.isEmpty()){
+            return;
+        }
+        int polledVertex = q.poll();
+        if(!visitedNodes.contains(polledVertex)){
+            visitedNodes.add(polledVertex);
+            try {
+                for(Integer vertex : graphAdjacencyList.getEdge(polledVertex)){
+                    q.offer(vertex);
+                }
+            } catch (InvalidVerticeException e) {
+                e.printStackTrace();
+            }
+
+            bfsHelper(graphAdjacencyList,visitedNodes,q);
+        }
+    }
+
 }

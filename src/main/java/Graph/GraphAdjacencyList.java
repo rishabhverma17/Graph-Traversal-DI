@@ -12,7 +12,6 @@ public class GraphAdjacencyList {
     private Map<Integer, List<Integer>> adjacencyList;
 
     /** Constructor */
-    @Inject
     public GraphAdjacencyList(int numberOfVertices){
         adjacencyList = new HashMap<Integer, List<Integer>>();
         for(int i=0; i<numberOfVertices; i++){
@@ -51,7 +50,7 @@ public class GraphAdjacencyList {
             if(adjacencyList.get(i).size() > 0){
                 System.out.print("Vertex :: "+i+" is connected to vertex :: {");
                 for(Integer vertices : adjacencyList.get(i)){
-                    System.out.print(vertices+",");
+                    System.out.print(vertices+" ");
                 }
                 System.out.println("}");
             }
