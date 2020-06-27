@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class BFS {
     public Set<Integer> BreadthFirstSearch(GraphAdjacencyList graphAdjacencyList, int root){
-        Set<Integer> visitedNodes = new LinkedHashSet<Integer>();
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Set<Integer> visitedNodes = new LinkedHashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.offer(root);
         while(!queue.isEmpty()){
             int vertex = queue.poll();
@@ -55,6 +55,38 @@ public class BFS {
             }
 
             bfsHelper(graphAdjacencyList,visitedNodes,q);
+        }
+    }
+
+    public void BFSInMatrix(int[][] grid) {
+
+        int h = grid.length;
+        if (h == 0)
+            return;
+        int l = grid[0].length;
+
+        boolean[][] visited = new boolean[h][l];
+
+        Queue<String> queue = new LinkedList<>();
+
+        queue.add(0 + "," + 0);
+
+        System.out.println("Breadth-First Traversal: ");
+        while (queue.isEmpty() == false) {
+
+            String x = queue.remove();
+            int row = Integer.parseInt(x.split(",")[0]);
+            int col = Integer.parseInt(x.split(",")[1]);
+
+            if (row < 0 || col < 0 || row >= h || col >= l || visited[row][col])
+                continue;
+
+            visited[row][col] = true;
+            System.out.print(grid[row][col] + " ");
+            queue.add(row + "," + (col - 1)); //go left
+            queue.add(row + "," + (col + 1)); //go right
+            queue.add((row - 1) + "," + col); //go up
+            queue.add((row + 1) + "," + col); //go down
         }
     }
 

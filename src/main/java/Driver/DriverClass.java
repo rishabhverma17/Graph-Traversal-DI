@@ -1,6 +1,7 @@
 package Driver;
 
 import Graph.GraphAdjacencyList;
+import Graph.GraphAdjacencyMatrix;
 import Traversals.BFS;
 import Traversals.DFS;
 import exceptions.InvalidVerticeException;
@@ -61,5 +62,25 @@ public class DriverClass {
         for(Integer i : bfsResultRecursive){
             System.out.print(i+" ");
         }
+
+        /** ----------------- Adjacency Matrix ----------------- */
+        System.out.println("\n\n----------------- Adjacency Matrix -----------------");
+        GraphAdjacencyMatrix graphAdjacencyMatrix = new GraphAdjacencyMatrix(5);
+        try {
+            graphAdjacencyMatrix.addEdge(0,1);
+            graphAdjacencyMatrix.addEdge(0,4);
+            graphAdjacencyMatrix.addEdge(1,2);
+            graphAdjacencyMatrix.addEdge(1,3);
+            graphAdjacencyMatrix.addEdge(1,4);
+            graphAdjacencyMatrix.addEdge(2,3);
+            graphAdjacencyMatrix.addEdge(3,4);
+            graphAdjacencyMatrix.printMatrix();
+        } catch (InvalidVerticeException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\nDepth First Search Over Graph(2D Matrix) (Iterative)");
+        DepthFirstSearch.DFSInMatrix(graphAdjacencyMatrix.getAdjacencyMatrix());
+        System.out.println("\nBreadth First Search Over Graph(2D Matrix) (Iterative)");
+        BreadthFirstSearch.BFSInMatrix(graphAdjacencyMatrix.getAdjacencyMatrix());
     }
 }
