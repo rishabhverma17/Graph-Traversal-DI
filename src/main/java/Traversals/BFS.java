@@ -69,12 +69,12 @@ public class BFS {
 
         Queue<String> queue = new LinkedList<>();
 
-        queue.add(0 + "," + 0);
+        queue.offer(0 + "," + 0);
 
         System.out.println("Breadth-First Traversal: ");
         while (queue.isEmpty() == false) {
 
-            String x = queue.remove();
+            String x = queue.poll();
             int row = Integer.parseInt(x.split(",")[0]);
             int col = Integer.parseInt(x.split(",")[1]);
 
